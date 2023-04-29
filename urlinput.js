@@ -55,6 +55,7 @@ function processNextUrl() {
 
 rl.question('Enter URLs (separated by commas): ', (input) => {
   urls.push(...input.split(','));
+  
 
   processNextUrl();
 });
