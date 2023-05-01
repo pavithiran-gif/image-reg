@@ -1,0 +1,17 @@
+{
+    "name": "PetConnect AI",
+    "version": "1.0.0",
+    "description": "Petconnect AI IMAGE MODERATION server",
+    "main": "main.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon server.js"
+    },
+    "author": "Devendran",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.15.3"
+     
+    }
+  }
+  

@@ -1,19 +1,20 @@
 import cv2
 import urllib.request
 import numpy as np
-import tkinter as tk
-from tkinter import filedialog
+#import tkinter as tk
+#from tkinter import filedialog
 import sys
 
 # thres = 0.45 # Threshold to detect object
 
 classNames = []
-classFile = r'\Users\pavit\Downloads\Compressed\Object_Detection_Files/coco.names'
+
+classFile = r'./coco.names'
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = r'\Users\pavit\Downloads\Compressed\Object_Detection_Files/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
-weightsPath = r'\Users\pavit\Downloads\Compressed\Object_Detection_Files/frozen_inference_graph.pb'
+configPath = r'./ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
+weightsPath = r'./frozen_inference_graph.pb'
 
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 net.setInputSize(320,320)
@@ -46,8 +47,8 @@ def getObjects(img, thres, nms, draw=True, objects=[]):
 if __name__ == "__main__":
 
     # Load image
-    root = tk.Tk()
-    root.withdraw()
+    #root = tk.Tk()
+    #root.withdraw()
 
     # Open a file dialog box to select an image file
     # file_path = filedialog.askopenfilename(title="Select Image File",
@@ -57,7 +58,7 @@ if __name__ == "__main__":
     # img = cv2.imread(file_path)
     
     # Load image from URL
-    # url = "https://www.sciencenews.org/wp-content/uploads/2019/10/110919_review_feat-1028x579.jpg"
+    #url = "https://www.sciencenews.org/wp-content/uploads/2019/10/110919_review_feat-1028x579.jpg"
     url = sys.argv[1]
 
     with urllib.request.urlopen(url) as url_response:
@@ -70,5 +71,5 @@ if __name__ == "__main__":
 
     result, objectInfo = getObjects(img,0.45,0.2)
     #print(objectInfo)
-    # cv2.imshow("Output",img)
+    #cv2.imshow("Output",img)
     cv2.waitKey(0)
